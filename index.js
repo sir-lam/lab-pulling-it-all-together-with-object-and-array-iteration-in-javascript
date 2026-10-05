@@ -114,3 +114,53 @@ function gameObject() {
         },
     };
 }
+
+
+
+function allteams() {
+    return Object.values(gameObject());
+}
+
+function allPlayers() {
+    return allteams().reduce(
+        (players, team) => Object.assign(players, team.players),
+        {}
+    );
+}
+
+function findTeam(teamName) {
+    return allteams().find((team) => team.teamName === teamName);
+}
+function playerStats(playerName) {
+    return allPlayers()[playerName];
+}
+function numPointsScored(playerName) {
+    const stats = playerStats(playerName);
+    return stats && stats.points;
+}
+
+function shoeSize(playerName) {
+    const stats = playerStats(playerName);
+    return stats && stats.shoe;
+}
+
+function teamColors(teamName) {
+    const team = findTeam(teamName);
+    return team && team.colors;
+}
+function teamNames() {
+    return allteams().map((team) => team.teamName);
+}
+
+function playerNumbers(teamName) {
+    const team = findTeam(teamName);
+    return team && Object.values(team.players).map((player) => player.number);
+}
+
+function bigShoeRebounds() {
+    const biggestShoePlayer = Object.values(allPlayers()).reduce(
+        (biggest, player) => (player.shoe > biggest.shoe ? player : biggest),
+    
+    );
+    return biggestShoePlayer.rebounds;
+}
