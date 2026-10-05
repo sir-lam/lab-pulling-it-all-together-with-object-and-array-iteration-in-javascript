@@ -164,3 +164,7 @@ function bigShoeRebounds() {
     );
     return biggestShoePlayer.rebounds;
 }
+console.log(bigShoeRebounds());
+console.log(playerNumbers("Charlotte Hornets"));
+console.log(teamNames());
+console.log(teamColors("Brooklyn Nets"));
